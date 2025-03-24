@@ -7,7 +7,7 @@ class Task {
       this.#text = text;
     }
   
-    get id() { // Getter for ID
+    getId() { // Getter for ID
       return this.#id;
     }
   

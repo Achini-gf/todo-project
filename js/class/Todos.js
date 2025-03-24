@@ -9,7 +9,8 @@ class Todos {
     this.#backend_url = url;
   }
 
-  getTasks = () => {
+  /*
+ getTasks = () => {
     return new Promise(async (resolve, reject) => {
       fetch(this.#backend_url)
         .then((response) => response.json())
@@ -23,7 +24,27 @@ class Todos {
           }
         );
     });
-  };
+  };*/
+  getTasks() {
+    return fetch(this.#backend_url)
+      .then((response) => response.json())
+      .then((data) => data.map((task) => new Task(task.id, task.description)));
+  }
+
+  removeTask = (id) => {
+    return new Promise(async (resolve, reject) => {
+        fetch(this.#backend_url + "/delete/" + id, {
+            method: "DELETE",
+        })
+        .then((response) => response.json())
+        .then((json) => {
+            this.#removeFromArray(id);
+            resolve(json.id)
+        }, (error) => {
+            reject(error)
+            })
+            })
+        };
 
   #readJson = (taskAsJson) => {
     taskAsJson.forEach((node) => {
@@ -37,6 +58,10 @@ class Todos {
     this.#tasks.push(task);
     return task;
   };
+  #removeFromArray = (id) => {
+    const arrayWithoutRemoved = this.#tasks.filter((task) => task.id !== id);
+    this.#tasks = arrayWithoutRemoved;
+  }
 
   addTask = (text) => {
     return new Promise(async (resolve, reject) => {
@@ -57,8 +82,12 @@ class Todos {
             reject(error);
           }
         );
-    });
+   
+      })
+    }
   };
-}
+
+
+
 
 export { Todos };
