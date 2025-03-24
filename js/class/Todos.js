@@ -9,22 +9,7 @@ class Todos {
     this.#backend_url = url;
   }
 
-  /*
- getTasks = () => {
-    return new Promise(async (resolve, reject) => {
-      fetch(this.#backend_url)
-        .then((response) => response.json())
-        .then(
-          (json) => {
-            this.#readJson(json);
-            resolve(this.#tasks);
-          },
-          (error) => {
-            reject(error);
-          }
-        );
-    });
-  };*/
+ 
   getTasks() {
     return fetch(this.#backend_url)
       .then((response) => response.json())
