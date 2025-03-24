@@ -1,4 +1,4 @@
-const BACKEND_ROOT_URL = "https://backend-6a0r.onrender.com";
+const BACKEND_ROOT_URL = "https://backend-6a0r.onrender.com/todo";
 //import { get } from "http";
 import { Todos } from "./class/Todos.js";
 
