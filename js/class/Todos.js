@@ -6,7 +6,7 @@ class Todos {
   #tasks = [];
 
   constructor(url) {
-    this.#backend_url = url;
+    this.#backend_url = url+"/todo";
   }
 
  
