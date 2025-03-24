@@ -11,11 +11,8 @@ class Task {
       return this.#id;
     }
   
-    
-  
-    get text() { // Getter for text
-      return this.#text}
-      getText() { // Add this method
+      
+    getText() { // Add this method
         return this.#text;
     }
   }
